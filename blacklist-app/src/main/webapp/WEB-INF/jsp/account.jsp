@@ -55,7 +55,7 @@
 
 <c:forEach items="${user.posts}" var="post">
 	<div class="blog-item clearfix " >
-	<a href="" class="text-warning"><small><span class="glyphicon glyphicon-pencil " aria-hidden="true"></span> edit</small></a>&nbsp;&nbsp;
+	<a href="<spring:url value="/posts/edit/${post.postId}.html" />" class="text-warning"><small><span class="glyphicon glyphicon-pencil " aria-hidden="true"></span> edit</small></a>&nbsp;&nbsp;
 	<a href="<spring:url value="/posts/remove/${post.postId}.html" />"  class="triggerRemove text-danger"><small><span class="glyphicon glyphicon-remove " aria-hidden="true"></span> remove</small></a>
 		<h3>${post.title}</h3>
 		<p>${post.content}</p>

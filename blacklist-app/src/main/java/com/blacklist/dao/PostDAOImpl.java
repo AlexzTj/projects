@@ -22,6 +22,10 @@ public class PostDAOImpl implements PostDAO {
 		em.flush();
 		return post;
 	}
+	public Post update(Post post) {
+		em.merge(post);
+		return post;
+	}
 
 	public void delete(Post post) {
 		em.remove(em.contains(post) ? post : em.merge(post));

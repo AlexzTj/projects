@@ -8,6 +8,7 @@ import com.blacklist.model.Post;
 public interface PostService {
 	
 	Post save(Post post);
+	Post update(Post post);
 
 	void delete(Long post_id);
 	

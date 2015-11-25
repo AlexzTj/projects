@@ -28,7 +28,11 @@ public class PostServiceImpl implements PostService {
 		System.out.println("service save");
 		return postDao.save(post);
 	}
-	
+	@Transactional
+	public Post update(Post post){
+		System.out.println("service update");
+		return postDao.update(post);
+	}
 	@Transactional
 	public void delete(Long id) {
 		postDao.delete(id);
