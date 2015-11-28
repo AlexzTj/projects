@@ -9,4 +9,6 @@ public interface UserDetailsService {
 	void delete(User user);
 
 	User findOneWithPosts(String name);
+	
+	User findOne(String id);
 }

@@ -13,6 +13,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users")
@@ -36,10 +40,15 @@ public class User {
 
 	@Id
 	@Column(name = "username", nullable = false,  length = 45)
+
 	private String userName;
 	
 	@Column(nullable = false)
+	
 	private String password;
+
+    @Transient
+	private String confirmPassword;
 	
 	@ManyToMany
 	@JoinTable(name="User_Role", 
@@ -105,6 +114,14 @@ public class User {
 	}
 	
 	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
+
 	public List<Comment> getComments() {
 		return comments;
 	}

@@ -1,8 +1,7 @@
 package com.blacklist.dao;
 
-import java.util.jar.Attributes.Name;
-
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -18,7 +17,6 @@ public class UserDAOImpl implements UserDAO {
 	private EntityManager em;
 
 	public User save(User user){
-		
 		em.persist(user);
 		em.flush();
 		return user;
@@ -32,9 +30,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User findOne(String id) {
-		TypedQuery<User> query = em.createQuery("select u from User u where u.userName = :username", User.class);
-		
-		return query.setParameter("username", id).getSingleResult();
+		try{
+			TypedQuery<User> query = em.createQuery("select u from User u where u.userName = :username", User.class);
+			
+			return query.setParameter("username", id).getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
 	}
 
 

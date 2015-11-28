@@ -18,6 +18,7 @@ public class PostDAOImpl implements PostDAO {
 	private EntityManager em;
 
 	public Post save(Post post) {
+		Post s=post;
 		em.persist(post);
 		em.flush();
 		return post;

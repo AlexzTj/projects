@@ -11,7 +11,7 @@
     <!-- Button trigger modal -->
 
 <br><br><br>
-<form:form commandName="post">
+<form:form commandName="post" action="/blacklist-app/posts.html" method="POST">
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -19,12 +19,14 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel"> New post</h4>
+        ${post.postId }
       </div>
       <div class="modal-body">
         
 		<div class="form-group">
 		<label for="title" class="control-label">Title</label><br>
 		<form:input path="title" cssClass="form-control" />
+		<form:errors path="title" />
 		</div>
 		
 		<div class="form-group">
@@ -40,6 +42,7 @@
 		<div class="form-group">
 		<label for="content" class=" control-label">My complain</label><br>
 		<form:textarea path="content" cssClass="form-control" />
+		<form:errors path="content" />
 		</div>
 	
       </div>
@@ -51,8 +54,12 @@
   </div>
 </div>
 </form:form>
-
-
+<c:if test="${not empty message}">
+<div class="alert alert-success alert-dismissible fade in" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  ${message}
+</div>
+</c:if>
 <c:forEach items="${user.posts}" var="post">
 	<div class="blog-item clearfix " >
 	<a href="<spring:url value="/posts/edit/${post.postId}.html" />" class="text-warning"><small><span class="glyphicon glyphicon-pencil " aria-hidden="true"></span> edit</small></a>&nbsp;&nbsp;

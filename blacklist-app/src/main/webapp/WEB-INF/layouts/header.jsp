@@ -119,6 +119,7 @@ color:#101010;
 				<ul class="nav navbar-nav navbar-right">
 				<security:authorize access="! isAuthenticated()">
 						<li><a href="<spring:url value="/login.html" />">Login</a></li>
+						<li><a href="<spring:url value="/register.html" />">Sign up</a></li>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
 						<li><a href="<spring:url value="/logout" />">Logout</a></li>

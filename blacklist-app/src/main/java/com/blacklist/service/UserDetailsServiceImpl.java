@@ -58,7 +58,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 	
 	@Transactional
-	private User findOne(String id) {
+	public User findOne(String id) {
 		return userDao.findOne(id);
 	}
 

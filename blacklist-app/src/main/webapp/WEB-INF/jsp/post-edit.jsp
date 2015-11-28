@@ -8,6 +8,7 @@
 		<div class="form-group">
 		<label for="title" class="control-label">Title</label><br>
 		<form:input path="title" cssClass="form-control" />
+		<form:errors path="title" cssclass="error" />
 		</div>
 		
 		<div class="form-group">
@@ -23,10 +24,10 @@
 		<div class="form-group">
 		<label for="content" class=" control-label">My complain</label><br>
 		<form:textarea path="content" cssClass="form-control" />
+		<form:errors path="content" cssclass="error" />
 		</div>
 	
     
-        <button type="button" class="btn btn-default" >Cancel</button>
         <input type="submit" class="btn btn-primary" value="Save"/>
      
 </form:form>
